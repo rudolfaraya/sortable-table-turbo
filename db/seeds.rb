@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+['Dallas Mavericks', 'Denver Nuggets', 'Phoenix Suns', 'San Antonio Spurs', 'Boston Celtics', 'Miami Heat', 'New Orleans Pelicans'].each do |name|
+  Team.create(name: name)
+end
+
+100.times do
+  Player.create(name: Faker::Name.name, team: Team.find(Team.pluck(:id).sample), seasons: rand(25))
+end

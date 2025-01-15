@@ -3,14 +3,17 @@
     <table class="min-w-full bg-white">
       <thead class="bg-gray-800 text-white">
         <tr>
-          <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-            <span>Name</span>
+          <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+            <%= show_sort_indicator_for("name") %>
+            <%= sort_link(column: "name", label: "Name") %>
           </th>
-          <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-            <span>Team</span>
+          <th id="players-team" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+            <%= show_sort_indicator_for("teams.name") %>
+            <%= sort_link(column: "teams.name", label: "Team") %>
           </th>
-          <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-            <span>Seasons</span>
+          <th id="players-seasons" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+            <%= show_sort_indicator_for("seasons") %>
+            <%= sort_link(column: "seasons", label: "Seasons") %>
           </th>
         </tr>
       </thead>

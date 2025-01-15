@@ -3,7 +3,11 @@ class PlayersController < ApplicationController
 
   # GET /players or /players.json
   def index
-    @players = Player.all
+    if params[:column].present?
+      @players = Player.includes(:team).order("#{params[:column]} #{params[:direction]}")
+    else
+      @players = Player.includes(:team).all
+    end
   end
 
   # GET /players/1 or /players/1.json
