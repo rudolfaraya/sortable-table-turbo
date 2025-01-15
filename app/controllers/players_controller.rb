@@ -3,9 +3,12 @@ class PlayersController < ApplicationController
 
   # GET /players or /players.json
   def index
+    session['filters'] ||= {}
+    session['filters'].merge!(filter_params)
+  
     @players = Player.includes(:team)
-    @players = @players.where("players.name like ?", "%#{params[:name]}%") if params[:name].present?
-    @players = @players.order(params.slice('column', 'direction').values.join(' '))
+    @players = @players.where("players.name LIKE ?", "%#{session['filters']['name']}%") if session['filters']['name'].present?
+    @players = @players.order(session['filters'].slice('column', 'direction').values.join(' '))
   end
 
   # GET /players/1 or /players/1.json
@@ -68,5 +71,9 @@ class PlayersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def player_params
       params.require(:player).permit(:name, :team_id, :seasons)
+    end
+    
+    def filter_params
+      params.permit(:name, :column, :direction)
     end
 end
