@@ -1,6 +1,7 @@
-<div class="max-w-7xl mx-auto mt-12">
-  <div class="shadow overflow-hidden rounded border-b border-gray-200">
-    <table class="min-w-full bg-white">
+<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+<div class="max-w-7xl mx-auto mt-12 w-full">
+  <div class="shadow rounded border-b border-gray-200">
+    <table class="bg-white min-w-full">
       <thead class="bg-gray-800 text-white">
         <tr>
           <th id="players-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
@@ -21,9 +22,9 @@
       <tbody class="text-gray-700">
         <% @players.each do |player| %>
           <tr>
-            <td class="text-left py-3 px-6"><%= player.name %></td>
-            <td class="text-left py-3 px-6"><%= player.team.name %></td>
-            <td class="text-left py-3 px-6"><%= player.seasons %></td>
+            <td class="text-left py-3 px-6 w-1/2"><%= player.name %></td>
+            <td class="text-left py-3 px-6 w-1/4"><%= player.team.name %></td>
+            <td class="text-left py-3 px-6 w-1/4"><%= player.seasons %></td>
           </tr>
         <% end %>
       </tbody>
